@@ -1,4 +1,3 @@
-import robot from 'robotjs';
 import { WebSocket } from 'ws';
 import { createClietCommand } from '../utils';
 

@@ -1,15 +1,14 @@
-import robot from 'robotjs';
+import { mouse, right } from '@nut-tree/nut-js';
 import { WebSocket } from 'ws';
 import { createClietCommand } from '../utils';
 import constants from '../constants';
 
-const right = (socket: WebSocket, param1: string) => {
-  const { x, y } = robot.getMousePos();
+const moveRight = (socket: WebSocket, param1: string) => {
   const width = Number(param1);
 
-  robot.dragMouse(x + width, y);
+  mouse.move(right(width));
   const command = constants.MOUSE_RIGHT + ' ' + width + 'px';
   return socket.send(createClietCommand(command));
 };
 
-export default right;
+export default moveRight;

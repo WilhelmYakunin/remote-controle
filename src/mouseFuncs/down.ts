@@ -1,15 +1,14 @@
-import robot from 'robotjs';
+import { mouse, down } from '@nut-tree/nut-js';
 import { WebSocket } from 'ws';
 import { createClietCommand } from '../utils';
 import constants from '../constants';
 
-const down = (socket: WebSocket, param1: string) => {
-  const { x, y } = robot.getMousePos();
+const moveDown = (socket: WebSocket, param1: string) => {
   const height = Number(param1);
 
-  robot.dragMouse(x, y + height);
+  mouse.move(down(height));
   const command = constants.MOUSE_DOWN + ' ' + height + 'px';
   return socket.send(createClietCommand(command));
 };
 
-export default down;
+export default moveDown;

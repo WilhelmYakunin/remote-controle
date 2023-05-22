@@ -1,4 +1,4 @@
-import robot from 'robotjs';
+import { mouse } from '@nut-tree/nut-js';
 import WebSocket, { WebSocketServer } from 'ws';
 import { EOL } from 'os';
 import 'dotenv/config';
@@ -29,9 +29,9 @@ Websocket able to be run at: ${WSPORT} port`
 
 const wss = new WebSocketServer({ port: WSPORT });
 
-wss.on('connection', (ws: WebSocket) => {
+wss.on('connection', async (ws: WebSocket) => {
   ws.send('open');
-  const { x, y } = robot.getMousePos();
+  const { x, y } = await mouse.getPosition();
   const msg: string =
     constants.MOUSE_POSITION + ' ' + x + 'px' + ',' + y + 'px';
   sendCoords(ws, msg);
@@ -42,7 +42,7 @@ wss.on('connection', (ws: WebSocket) => {
 
     switch (command) {
       case constants.MOUSE_POSITION:
-        const { x, y } = robot.getMousePos();
+        const { x, y } = await mouse.getPosition();
         const msg: string =
           constants.MOUSE_POSITION + ' ' + x + 'px' + ',' + y + 'px';
         return makeOperations(msg, sendCoords(ws, msg));
