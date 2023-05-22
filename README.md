@@ -30,7 +30,7 @@ Command | Description
 List of websocket commands:
 mouse move: key down, key up, key left, key right,
 drowing: key "c" for circle, key "r" for rectangle and key "s" for sqaure (mose is down so it able to draw those figuares in paint),
-screenshoot: keyborad with 'p', 'Left CTRL + P' and their syntax (<- - cmd from frontend, -> - answer):
+position and screenshoot: keyborad with 'p' (position), 'Left CTRL + P' (screenshoot) and their syntax (<- - cmd from frontend, -> - answer):
 
 - Navigation over the x and y axis
   - Move mouse up
